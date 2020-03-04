@@ -1,0 +1,50 @@
+
+local tableNameView = tableNameView or BaseClass(SubView)
+-- local tableNameItemRender = tableNameItemRender or BaseClass(BaseRender)
+-- tableNameCtrl.Instance
+-- tableNameData.Instance
+
+-- delete obj
+--	if nil ~= self.obj then
+--		self.obj:DeleteMe()
+--	end
+--	self.obj = nil
+
+function tableNameView:__init()
+	self.def_index = 1
+	self.texture_path_list = {'res/xui/mvc_name.png'}
+	self.config_tab = {
+		{"mvc_name_ui_cfg", 1, {0}},
+	}
+	self.def_index = 1
+end
+
+function tableNameView:__delete()
+end
+
+function tableNameView:LoadCallBack(index, loaded_times)
+	if loaded_times <= 1 then	
+	end
+	-- EventProxy.New(tableNameData.Instance, self):AddEventListener(tableNameData.Undefine, BindTool.Bind(self.tableNameDataChangeCallback, self))
+end
+
+function tableNameView:ReleaseCallBack()
+end
+
+function tableNameView:OpenCallBack()
+end
+
+function tableNameView:CloseCallBack()
+	AudioManager.Instance:PlayOpenCloseUiEffect()
+end
+
+function tableNameView:ShowIndexCallBack(index)
+	self:Flush(index)
+end
+
+function tableNameView:OnFlush(param_list, index)
+	for k, v in pairs(param_list) do
+	end
+end
+
+return tableNameView

@@ -1,0 +1,41 @@
+require("scripts/game/mvcName/mvcName_data")
+require("scripts/game/mvcName/mvcName_view")
+tableNameCtrl = tableNameCtrl or BaseClass(BaseController)
+
+function tableNameCtrl:__init()
+    if tableNameCtrl.Instance then
+        ErrorLog("[tableNameCtrl]:Attempt to create singleton twice!")
+    end
+    tableNameCtrl.Instance = self
+    
+    self.data = tableNameData.New()
+    self.view = tableNameView.New(ViewDef.tableName)
+    self:RegisterAllProtocols()
+end
+
+function tableNameCtrl:__delete()
+    self.view:DeleteMe()
+    self.view = nil
+    
+    self.data:DeleteMe()
+    self.data = nil
+    
+    tableNameCtrl.Instance = nil
+end
+
+function tableNameCtrl:RegisterAllProtocols()
+    -- self:RegisterProtocol(SCtableNameGuajiInfo, "OntableNameGuajiInfo")
+    -- RemindManager.Instance:RegisterCheckRemind(BindTool.Bind(self.GetRemindNum, self), RemindName.GuajiReward)
+end
+
+function tableNameCtrl:OntableNameGuajiInfo(protocol)
+end
+
+
+function tableNameCtrl.SendtableNameGuajiReq()
+    local protocol = ProtocolPool.Instance:GetProtocol(CStableNameGuajiReq)
+    protocol:EncodeAndSend()
+end
+
+function tableNameCtrl:GetRemindNum(remind_name)
+end

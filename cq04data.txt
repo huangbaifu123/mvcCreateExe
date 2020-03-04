@@ -1,0 +1,16 @@
+tableNameData = tableNameData or BaseClass()
+
+function tableNameData:__init()
+	if tableNameData.Instance then
+		ErrorLog("[tableNameData] attempt to create singleton twice!")
+		return
+	end
+	tableNameData.Instance = self
+end
+
+function tableNameData:__delete()
+end
+
+function tableNameData:GetRewardRemind()
+	return 0
+end

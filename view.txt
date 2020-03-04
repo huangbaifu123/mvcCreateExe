@@ -1,0 +1,40 @@
+tableNameView = tableNameView or BaseClass(XuiBaseView)
+
+-- ui¿Ø¼þ
+-- XUI.AddClickEventListener(self.node_t_list.btn_add_coin.node,function () ViewManager.Instance:OpenViewByDef(ViewDef.Shop) end, true)
+
+function tableNameView:__init()
+	self:SetModal(true)
+	self.config_tab = {
+		{"common_ui_cfg", 1, {0}},
+		{"common_ui_cfg", 2, {0}},
+	}
+	
+end
+
+function tableNameView:ReleaseCallBack()
+end
+
+function tableNameView:LoadCallBack(index, loaded_times)
+	if loaded_times <= 1 then
+	end
+end
+
+function tableNameView:OpenCallBack()
+	AudioManager.Instance:PlayOpenCloseUiEffect()
+end
+
+function tableNameView:ShowIndexCallBack(index)
+	self:Flush(index)
+end
+
+function tableNameView:CloseCallBack()
+	AudioManager.Instance:PlayOpenCloseUiEffect()
+end
+
+function tableNameView:OnFlush(param_t, index)
+	for k, v in pairs(param_t) do
+		if k == "all" then
+		end
+	end
+end
